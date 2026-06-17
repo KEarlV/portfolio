@@ -293,17 +293,35 @@ Phone:     09707601013 (SMS / Call)`
     setInterval(fetchWeather, 600000);
 
     // ----------------------------------------------------
-    // 6. Visitor Guestbook (LocalStorage Persistence)
+    // 6. Visitor Guestbook (Persistent Cloud KV Store - KVdb)
     // ----------------------------------------------------
     const guestbookForm = document.getElementById("guestbook-form");
     const gbName = document.getElementById("gb-name");
     const gbMessage = document.getElementById("gb-message");
     const guestbookMessages = document.getElementById("guestbook-messages");
+    const kvdbUrl = "https://kvdb.io/77rKGPm6ZGx2Kk4orN4TRx/guestbook";
 
-    function renderGuestbook() {
-        const messages = JSON.parse(localStorage.getItem("portfolio-guestbook")) || [];
-        
-        if (messages.length === 0) {
+    async function loadGuestbook() {
+        try {
+            guestbookMessages.innerHTML = `<div class="loading-spinner">Loading signatures...</div>`;
+            const response = await fetch(kvdbUrl);
+            
+            if (response.status === 404) {
+                renderGuestbook([]);
+                return;
+            }
+            
+            if (!response.ok) throw new Error("Database offline");
+            
+            const messages = await response.json();
+            renderGuestbook(messages);
+        } catch (err) {
+            guestbookMessages.innerHTML = `<div class="empty-messages" style="color:#ef4444">Unable to load guestbook.</div>`;
+        }
+    }
+
+    function renderGuestbook(messages) {
+        if (!messages || messages.length === 0) {
             guestbookMessages.innerHTML = `<div class="empty-messages">No signatures yet. Be the first!</div>`;
             return;
         }
@@ -319,13 +337,17 @@ Phone:     09707601013 (SMS / Call)`
         guestbookMessages.scrollTop = 0;
     }
 
-    guestbookForm.addEventListener("submit", (e) => {
+    guestbookForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         
         const name = gbName.value.trim();
         const text = gbMessage.value.trim();
         
         if (name === "" || text === "") return;
+
+        const submitBtn = guestbookForm.querySelector("button[type='submit']");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Signing...";
 
         const timestamp = new Date().toLocaleDateString('en-US', {
             month: 'short',
@@ -336,14 +358,32 @@ Phone:     09707601013 (SMS / Call)`
 
         const newMsg = { name, text, time: timestamp };
         
-        const messages = JSON.parse(localStorage.getItem("portfolio-guestbook")) || [];
-        messages.unshift(newMsg); // Add new entries to top
-        localStorage.setItem("portfolio-guestbook", JSON.stringify(messages));
-        
-        gbName.value = "";
-        gbMessage.value = "";
-        
-        renderGuestbook();
+        try {
+            let messages = [];
+            const getRes = await fetch(kvdbUrl);
+            if (getRes.ok && getRes.status !== 404) {
+                messages = await getRes.json();
+            }
+            
+            messages.unshift(newMsg);
+            
+            const postRes = await fetch(kvdbUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(messages)
+            });
+            
+            if (!postRes.ok) throw new Error("Failed to save entry");
+            
+            gbName.value = "";
+            gbMessage.value = "";
+            renderGuestbook(messages);
+        } catch (err) {
+            alert("Could not save signature. Please try again.");
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Sign Guestbook";
+        }
     });
 
     function escapeHTML(str) {
@@ -358,7 +398,7 @@ Phone:     09707601013 (SMS / Call)`
         );
     }
     
-    renderGuestbook();
+    loadGuestbook();
 
     // ----------------------------------------------------
     // 7. Contact Form Handling
