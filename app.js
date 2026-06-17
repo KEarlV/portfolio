@@ -293,27 +293,23 @@ Phone:     09707601013 (SMS / Call)`
     setInterval(fetchWeather, 600000);
 
     // ----------------------------------------------------
-    // 6. Visitor Guestbook (Persistent Cloud KV Store - KVdb)
+    // 6. Visitor Guestbook (Persistent Cloud KV Store - Puter.js)
     // ----------------------------------------------------
     const guestbookForm = document.getElementById("guestbook-form");
     const gbName = document.getElementById("gb-name");
     const gbMessage = document.getElementById("gb-message");
     const guestbookMessages = document.getElementById("guestbook-messages");
-    const kvdbUrl = "https://kvdb.io/77rKGPm6ZGx2Kk4orN4TRx/guestbook";
 
     async function loadGuestbook() {
         try {
             guestbookMessages.innerHTML = `<div class="loading-spinner">Loading signatures...</div>`;
-            const response = await fetch(kvdbUrl);
             
-            if (response.status === 404) {
-                renderGuestbook([]);
+            if (typeof puter === 'undefined') {
+                setTimeout(loadGuestbook, 500);
                 return;
             }
-            
-            if (!response.ok) throw new Error("Database offline");
-            
-            const messages = await response.json();
+
+            const messages = await puter.kv.get("guestbook") || [];
             renderGuestbook(messages);
         } catch (err) {
             guestbookMessages.innerHTML = `<div class="empty-messages" style="color:#ef4444">Unable to load guestbook.</div>`;
@@ -344,6 +340,10 @@ Phone:     09707601013 (SMS / Call)`
         const text = gbMessage.value.trim();
         
         if (name === "" || text === "") return;
+        if (typeof puter === 'undefined') {
+            alert("Database is initializing. Please try again in a moment.");
+            return;
+        }
 
         const submitBtn = guestbookForm.querySelector("button[type='submit']");
         submitBtn.disabled = true;
@@ -359,21 +359,9 @@ Phone:     09707601013 (SMS / Call)`
         const newMsg = { name, text, time: timestamp };
         
         try {
-            let messages = [];
-            const getRes = await fetch(kvdbUrl);
-            if (getRes.ok && getRes.status !== 404) {
-                messages = await getRes.json();
-            }
-            
+            const messages = await puter.kv.get("guestbook") || [];
             messages.unshift(newMsg);
-            
-            const postRes = await fetch(kvdbUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(messages)
-            });
-            
-            if (!postRes.ok) throw new Error("Failed to save entry");
+            await puter.kv.set("guestbook", messages);
             
             gbName.value = "";
             gbMessage.value = "";
