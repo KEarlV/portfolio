@@ -431,37 +431,28 @@ Phone:     09707601013 (SMS / Call)`
         const submitBtn = contactForm.querySelector("button[type='submit']");
         submitBtn.disabled = true;
 
-        if (FORMSPREE_ID && FORMSPREE_ID !== "YOUR_FORMSPREE_ID") {
-            try {
-                const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-                    method: "POST",
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ name, email, subject, message })
-                });
+        try {
+            const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, email, subject, message })
+            });
 
-                if (response.ok) {
-                    formFeedback.textContent = `Thank you, ${name}! Your inquiry has been sent successfully.`;
-                    formFeedback.className = "form-feedback success";
-                    contactForm.reset();
-                } else {
-                    throw new Error("Formspree response error");
-                }
-            } catch (err) {
-                formFeedback.textContent = "Oops! There was a problem sending your message.";
-                formFeedback.className = "form-feedback error";
-            } finally {
-                submitBtn.disabled = false;
-            }
-        } else {
-            setTimeout(() => {
-                formFeedback.innerHTML = `Simulation Mode: Thank you, ${name}! To receive real emails to <i>kevargasitsolutions@gmail.com</i>, register a free form at <a href="https://formspree.io" target="_blank" style="color:var(--accent-secondary)">formspree.io</a> and update the <b>FORMSPREE_ID</b> in <b>app.js</b>.`;
+            if (response.ok) {
+                formFeedback.textContent = `Thank you, ${name}! Your message has been sent successfully.`;
                 formFeedback.className = "form-feedback success";
                 contactForm.reset();
-                submitBtn.disabled = false;
-            }, 1200);
+            } else {
+                throw new Error("Formspree response error");
+            }
+        } catch (err) {
+            formFeedback.textContent = "Oops! There was a problem sending your message. Please try again later.";
+            formFeedback.className = "form-feedback error";
+        } finally {
+            submitBtn.disabled = false;
         }
     });
 
