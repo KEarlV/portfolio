@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyberpunk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Earl B. Vargas | Portfolio</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio of King Earl B. Vargas - BSIT student, DOST Scholar, and Developer. Explore projects, interactive shell terminal, and DOST stipend simulator.">
+    <meta name="keywords" content="King Earl B. Vargas, Portfolio, DOST Scholar, BSIT, PSU Palawan, Web Developer, Interactive Terminal">
+    <meta name="author" content="King Earl B. Vargas">
+    <!-- OpenGraph / Social Meta Tags -->
+    <meta property="og:title" content="King Earl B. Vargas | Portfolio">
+    <meta property="og:description" content="Portfolio of King Earl B. Vargas - BSIT student, DOST Scholar, and Developer. Explore projects, interactive shell terminal, and DOST stipend simulator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/KEarlV">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <!-- Main Style sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Background Mesh Gradients -->
+    <div class="mesh-bg">
+        <div class="mesh-sphere sphere-1"></div>
+        <div class="mesh-sphere sphere-2"></div>
+        <div class="mesh-sphere sphere-3"></div>
+    </div>
+
+    <!-- Theme Switcher & Status Bar (Top Header) -->
+    <header class="top-bar">
+        <div class="logo">
+            <span class="logo-prefix">&lt;</span>KEV<span class="logo-suffix"> /&gt;</span>
+        </div>
+        <div class="dost-badge-wrapper">
+            <div class="dost-glow-badge">
+                <span class="pulse-dot"></span>
+                DOST Scholar
+            </div>
+        </div>
+        <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="status-indicator">
+                    <span class="status-pulse"></span>
+                    <span class="status-text">Available for IT Solutions & Development</span>
+                </div>
+                <h1 class="hero-title">
+                    Hi, I am <span class="gradient-text">King Earl B. Vargas</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    <span id="typed-role">BSIT Student & Full-Stack Developer</span><span class="typed-cursor">|</span>
+                </h2>
+                <p class="hero-description">
+                    A dedicated 3rd-year IT student at <strong class="highlight-text">Palawan State University</strong> and a proud <strong class="highlight-text">DOST Scholar</strong>. Building automated workflows, backend integrations with Flask, and clean user-focused software.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>View Projects</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <!-- Quick Coder Specs -->
+            <div class="hero-specs-card glass-panel">
+                <div class="specs-header">
+                    <span class="dot-red"></span>
+                    <span class="dot-yellow"></span>
+                    <span class="dot-green"></span>
+                    <span class="specs-title">developer.json</span>
+                </div>
+                <div class="specs-code">
+                    <pre><code>{
+  <span class="json-key">"name"</span>: <span class="json-val">"King Earl B. Vargas"</span>,
+  <span class="json-key">"role"</span>: <span class="json-val">"BSIT 3rd Year Scholar"</span>,
+  <span class="json-key">"origin"</span>: <span class="json-val">"PSU Palawan"</span>,
+  <span class="json-key">"scholarship"</span>: <span class="json-val">"DOST-SEI"</span>,
+  <span class="json-key">"core_skills"</span>: [
+    <span class="json-val">"Python"</span>, <span class="json-val">"Flask"</span>, <span class="json-val">"Flask-SQLAlchemy"</span>,
+    <span class="json-val">"Task Automation"</span>, <span class="json-val">"SQL"</span>, <span class="json-val">"JS/CSS"</span>
+  ],
+  <span class="json-key">"status"</span>: <span class="json-val">"Building next-gen systems"</span>
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Terminal Widget -->
+        <section id="terminal-section" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="number-accent">01.</span> Interactive Shell Terminal</h2>
+                <p class="section-desc">Type commands in the console below to interactively fetch details from my CV.</p>
+            </div>
+            <div class="terminal-widget glass-panel">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="term-btn term-close"></span>
+                        <span class="term-btn term-minimize"></span>
+                        <span class="term-btn term-maximize"></span>
+                    </div>
+                    <span class="terminal-title">guest@kingearl-desktop:~</span>
+                    <span class="terminal-network">online</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-line">Welcome to King Earl's Interactive Shell v1.0.0 (Type <span class="term-highlight">help</span> for a list of available commands).</div>
+                    <div class="terminal-line"><br></div>
+                    <div id="terminal-output"></div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt">guest@kingearl:~$</span>
+                        <input type="text" id="terminal-input" autocomplete="off" autofocus aria-label="Terminal input line">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section id="projects" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="number-accent">02.</span> Featured Projects</h2>
+                <p class="section-desc">Selected programming works building automation, backend portals, and database integrations.</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-panel" data-tilt>
+                    <div class="project-header">
+                        <div class="project-badge">Python / Flask</div>
+                        <div class="project-links">
+                            <a href="https://github.com/KEarlV" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Flask To-Do List</h3>
+                    <p class="project-description">
+                        A robust, full-featured task management web application built with Python and Flask. Integrated with SQLite database via SQLAlchemy, supporting full CRUD, user accounts, and category grouping.
+                    </p>
+                    <div class="project-tech">
+                        <span>Flask</span>
+                        <span>SQLAlchemy</span>
+                        <span>SQLite</span>
+                        <span>HTML/CSS</span>
+                        <span>JS</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-panel" data-tilt>
+                    <div class="project-header">
+                        <div class="project-badge">Automation</div>
+                        <div class="project-links">
+                            <a href="https://github.com/KEarlV" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Admin Task Automation</h3>
+                    <p class="project-description">
+                        A workflow suite using Python scripts and task scheduling (cron) to automate folder organization, administrative document compilation, and regular SQL database backup management.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Shell Scripting</span>
+                        <span>Cron Jobs</span>
+                        <span>SQLite</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-panel" data-tilt>
+                    <div class="project-header">
+                        <div class="project-badge">Fullstack System</div>
+                        <div class="project-links">
+                            <a href="https://github.com/KEarlV" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Church Management System</h3>
+                    <p class="project-description">
+                        An administrative portal designed to coordinate church community metrics. Features database engines for records monitoring, event scheduling, membership profiles, and financial record auditing.
+                    </p>
+                    <div class="project-tech">
+                        <span>Database Design</span>
+                        <span>Web Interface</span>
+                        <span>Auth</span>
+                        <span>SQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Integration Widgets Section (Stipend Tracker, Weather, Guestbook) -->
+        <section id="interactive-widgets" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="number-accent">03.</span> Interactive Coder Widgets</h2>
+                <p class="section-desc">Demonstrating frontend utilities, localStorage persistence, and external API requests.</p>
+            </div>
+            
+            <div class="widgets-grid">
+                <!-- DOST Stipend Tracker -->
+                <div class="widget-card glass-panel">
+                    <h3 class="widget-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12" y2="18"></line><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                        DOST Stipend Simulator
+                    </h3>
+                    <p class="widget-intro">Estimate your academic allowance release parameters according to DOST criteria.</p>
+                    <div class="tracker-inputs">
+                        <label for="monthly-months">Months to Estimate:</label>
+                        <input type="number" id="monthly-months" min="1" max="10" value="5">
+                        
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="book-allowance" checked> Include Book Allowance (₱5,000 / sem)</label>
+                            <label><input type="checkbox" id="connectivity-allowance" checked> Include Connectivity (₱1,000 / sem)</label>
+                        </div>
+                    </div>
+                    <div class="tracker-result">
+                        <div class="result-row">
+                            <span>Monthly Stipend Rate:</span>
+                            <strong class="text-cyan">₱8,000</strong>
+                        </div>
+                        <div class="result-row total-row">
+                            <span>Estimated Total:</span>
+                            <strong id="estimated-total" class="text-violet">₱46,000</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Palawan Live Weather & Time Status -->
+                <div class="widget-card glass-panel">
+                    <h3 class="widget-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path><circle cx="12" cy="12" r="4"></circle></svg>
+                        PSU Palawan Weather & Time
+                    </h3>
+                    <p class="widget-intro">Real-time status at Palawan State University, Puerto Princesa City.</p>
+                    <div class="weather-display" id="weather-display">
+                        <div class="loading-spinner">Fetching live metrics...</div>
+                    </div>
+                    <div class="time-display">
+                        <span>Local Time (PST):</span>
+                        <strong id="local-time">--:--:-- PM</strong>
+                    </div>
+                </div>
+
+                <!-- Visitor Guestbook -->
+                <div class="widget-card glass-panel">
+                    <h3 class="widget-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        Visitor Guestbook
+                    </h3>
+                    <p class="widget-intro">Sign my local storage guestbook to test browser database state.</p>
+                    <form id="guestbook-form" class="widget-form">
+                        <input type="text" id="gb-name" placeholder="Your Name" required aria-label="Guestbook name">
+                        <textarea id="gb-message" placeholder="Leave a greeting..." rows="2" required aria-label="Guestbook message"></textarea>
+                        <button type="submit" class="btn btn-sm btn-primary">Sign Guestbook</button>
+                    </form>
+                    <div class="guestbook-messages" id="guestbook-messages">
+                        <div class="empty-messages">No signatures yet. Be the first!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic & Experience Timeline -->
+        <section id="about" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="number-accent">04.</span> Education & Credentials</h2>
+                <p class="section-desc">My academic and scholarship tracking timeline.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2023 - Present</div>
+                    <h3 class="timeline-title">BSIT 3rd Year Standing</h3>
+                    <p class="timeline-org">Palawan State University (PSU)</p>
+                    <p class="timeline-details">
+                        Focusing on Software Engineering, Database Systems, Network Architecture, and Task Automation. Active leader in student developer discussions.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2023 - Present</div>
+                    <h3 class="timeline-title">DOST-SEI Merit Scholar</h3>
+                    <p class="timeline-org">Department of Science and Technology - Science Education Institute</p>
+                    <p class="timeline-details">
+                        Awarded prestigious state scholarship for academic competence in science and technology. Complying with rigorous academic standing metrics and technology innovations.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021 - 2023</div>
+                    <h3 class="timeline-title">Senior High School - STEM Strand</h3>
+                    <p class="timeline-org">Palawan National School (PNS)</p>
+                    <p class="timeline-details">
+                        Specialized in Science, Technology, Engineering, and Mathematics. Built strong analytical, scientific inquiry, and advanced mathematics foundations, laying the groundwork for engineering and computing applications.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="number-accent">05.</span> Certifications & Badges</h2>
+                <p class="section-desc">Verified technical courses and professional qualifications.</p>
+            </div>
+            <div class="certifications-grid">
+                <!-- Cert 1 -->
+                <div class="cert-card glass-panel" onclick="openCertModal('cisco-hardware-cert.png', 'Hardware and Upgrade Support - Cisco Networking Academy')">
+                    <div class="cert-icon text-cyan">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="cert-body">
+                        <span class="cert-issuer">Cisco Networking Academy</span>
+                        <h3 class="cert-name">Hardware & Upgrade Support</h3>
+                        <p class="cert-desc">Demonstrated proficiency in system diagnostics, equipment safety, component upgrading (RAM, drives, PSU), and hardware troubleshooting.</p>
+                        <span class="cert-date">Issued: June 17, 2026</span>
+                    </div>
+                    <div class="cert-action">
+                        <span class="btn btn-sm btn-secondary">View Certificate</span>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card glass-panel" onclick="openCertModal('tesda-css-cert.png', 'Introduction to CSS - TESDA')">
+                    <div class="cert-icon text-violet">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="cert-body">
+                        <span class="cert-issuer">TESDA Online Program</span>
+                        <h3 class="cert-name">Introduction to CSS</h3>
+                        <p class="cert-desc">Acquired formal core competencies in CSS styling structures, cascading selectors, visual box model properties, and responsive grid layouts.</p>
+                        <span class="cert-date">Issued: January 4, 2025 • Code: RAb3kcYGbO</span>
+                    </div>
+                    <div class="cert-action">
+                        <span class="btn btn-sm btn-secondary">View Certificate</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="number-accent">06.</span> Get In Touch</h2>
+                <p class="section-desc">Let's discuss automated systems, database design, or scholarship networking.</p>
+            </div>
+            <div class="contact-layout">
+                <!-- Direct contact info cards -->
+                <div class="contact-info">
+                    <div class="info-card glass-panel">
+                        <div class="info-icon text-violet">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <div class="info-content">
+                            <h3>Email Me</h3>
+                            <a href="mailto:kevargasitsolutions@gmail.com">kevargasitsolutions@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card glass-panel">
+                        <div class="info-icon text-cyan">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div class="info-content">
+                            <h3>Call/SMS</h3>
+                            <a href="tel:09707601013">09707601013</a>
+                        </div>
+                    </div>
+
+                    <div class="social-links-grid">
+                        <a href="https://github.com/KEarlV" class="social-icon-btn glass-panel" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.facebook.com/kingearl.vargas" class="social-icon-btn glass-panel" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/v.ram.page/" class="social-icon-btn glass-panel" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contact-form" class="contact-form glass-panel">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <input type="text" id="contact-name" required placeholder=" " autocomplete="name">
+                            <label for="contact-name">Your Name</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="contact-email" required placeholder=" " autocomplete="email">
+                            <label for="contact-email">Email Address</label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="contact-subject" required placeholder=" ">
+                        <label for="contact-subject">Subject</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="contact-message" required placeholder=" " rows="6"></textarea>
+                        <label for="contact-message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                    <div id="form-feedback" class="form-feedback"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cert Overlay Modal -->
+    <div id="cert-modal" class="modal-overlay" onclick="closeCertModal()">
+        <span class="modal-close" onclick="closeCertModal()">&times;</span>
+        <div class="modal-content-wrapper" onclick="event.stopPropagation()">
+            <img id="modal-img" src="" alt="Certificate Image">
+            <h3 id="modal-caption">Certificate View</h3>
+        </div>
+    </div>
+
+    <!-- macOS Navigation Dock -->
+    <nav class="dock-container">
+        <div class="dock-panel">
+            <a href="#home" class="dock-item" aria-label="Home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span class="tooltip">Home</span>
+            </a>
+            <a href="#terminal-section" class="dock-item" aria-label="Terminal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                <span class="tooltip">Console</span>
+            </a>
+            <a href="#projects" class="dock-item" aria-label="Projects">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                <span class="tooltip">Projects</span>
+            </a>
+            <a href="#interactive-widgets" class="dock-item" aria-label="Widgets">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                <span class="tooltip">Widgets</span>
+            </a>
+            <a href="#about" class="dock-item" aria-label="Credentials">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                <span class="tooltip">Education</span>
+            </a>
+            <a href="#certifications" class="dock-item" aria-label="Certifications">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span class="tooltip">Certs</span>
+            </a>
+            <a href="#contact" class="dock-item" aria-label="Contact">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span class="tooltip">Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Logic Script -->
+    <script src="app.js"></script>
+</body>
+</html>
