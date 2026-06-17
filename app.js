@@ -293,23 +293,46 @@ Phone:     09707601013 (SMS / Call)`
     setInterval(fetchWeather, 600000);
 
     // ----------------------------------------------------
-    // 6. Visitor Guestbook (Persistent Cloud KV Store - Puter.js)
+    // 6. Visitor Guestbook (Persistent Cloud Key-Value API - keyvalue.immanuel.co)
     // ----------------------------------------------------
     const guestbookForm = document.getElementById("guestbook-form");
     const gbName = document.getElementById("gb-name");
     const gbMessage = document.getElementById("gb-message");
     const guestbookMessages = document.getElementById("guestbook-messages");
 
+    const APP_KEY = "t0571x1n";
+    const ITEM_KEY = "guestbook_signatures";
+
+    function toBase64URL(str) {
+        const base64 = btoa(unescape(encodeURIComponent(str)));
+        return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    function fromBase64URL(str) {
+        let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+        while (base64.length % 4) {
+            base64 += '=';
+        }
+        return decodeURIComponent(escape(atob(base64)));
+    }
+
     async function loadGuestbook() {
         try {
             guestbookMessages.innerHTML = `<div class="loading-spinner">Loading signatures...</div>`;
             
-            if (typeof puter === 'undefined') {
-                setTimeout(loadGuestbook, 500);
-                return;
+            const res = await fetch(`https://keyvalue.immanuel.co/api/KeyVal/GetValue/${APP_KEY}/${ITEM_KEY}`);
+            if (!res.ok) throw new Error("Database fetch error");
+            
+            const rawVal = await res.json();
+            let messages = [];
+            if (rawVal && rawVal.trim() !== "" && rawVal !== '""') {
+                try {
+                    const decoded = fromBase64URL(rawVal);
+                    messages = JSON.parse(decoded);
+                } catch (e) {
+                    console.error("Decoding error:", e);
+                }
             }
-
-            const messages = await puter.kv.get("guestbook") || [];
             renderGuestbook(messages);
         } catch (err) {
             guestbookMessages.innerHTML = `<div class="empty-messages" style="color:#ef4444">Unable to load guestbook.</div>`;
@@ -340,10 +363,6 @@ Phone:     09707601013 (SMS / Call)`
         const text = gbMessage.value.trim();
         
         if (name === "" || text === "") return;
-        if (typeof puter === 'undefined') {
-            alert("Database is initializing. Please try again in a moment.");
-            return;
-        }
 
         const submitBtn = guestbookForm.querySelector("button[type='submit']");
         submitBtn.disabled = true;
@@ -359,15 +378,43 @@ Phone:     09707601013 (SMS / Call)`
         const newMsg = { name, text, time: timestamp };
         
         try {
-            const messages = await puter.kv.get("guestbook") || [];
+            const res = await fetch(`https://keyvalue.immanuel.co/api/KeyVal/GetValue/${APP_KEY}/${ITEM_KEY}`);
+            if (!res.ok) throw new Error("Fetch error");
+            const rawVal = await res.json();
+            
+            let messages = [];
+            if (rawVal && rawVal.trim() !== "" && rawVal !== '""') {
+                try {
+                    const decoded = fromBase64URL(rawVal);
+                    messages = JSON.parse(decoded);
+                } catch (e) {
+                    console.error("Decoding error during update:", e);
+                }
+            }
+            
             messages.unshift(newMsg);
-            await puter.kv.set("guestbook", messages);
+            
+            // Limit to max 50 entries to prevent hitting URL size limits in subsequent requests
+            if (messages.length > 50) {
+                messages = messages.slice(0, 50);
+            }
+
+            const jsonStr = JSON.stringify(messages);
+            const encodedVal = toBase64URL(jsonStr);
+
+            const updateRes = await fetch(`https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/${APP_KEY}/${ITEM_KEY}/${encodedVal}`, {
+                method: "POST",
+                body: ""
+            });
+
+            if (!updateRes.ok) throw new Error("Save error");
             
             gbName.value = "";
             gbMessage.value = "";
             renderGuestbook(messages);
         } catch (err) {
             alert("Could not save signature. Please try again.");
+            console.error(err);
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = "Sign Guestbook";
